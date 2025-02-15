@@ -119,21 +119,11 @@
         </div>
     </div>
 
-    <!-- 背景音乐 -->
-    <audio autoplay="autoplay" loop="loop" id="bgMusic">
-        <source src="./music.mp3" type="audio/mp3" />
-    </audio>
-
-    <!-- 播放音乐按钮 -->
-    <button id="playButton" class="play-button">播放音乐</button>
-
     <script>
         let yesButton = document.getElementById("yes");
         let noButton = document.getElementById("no");
         let questionText = document.getElementById("question");
         let mainImage = document.getElementById("mainImage");
-        let bgMusic = document.getElementById("bgMusic");
-        let playButton = document.getElementById("playButton");
 
         let clickCount = 0;  // 记录点击 No 的次数
 
@@ -146,20 +136,7 @@
             "不行:("
         ];
 
-        // 尝试在页面加载时自动播放音乐
-        window.onload = function() {
-            bgMusic.play().catch(function() {
-                // 如果自动播放失败，显示播放按钮
-                playButton.style.display = "block";
-            });
-        };
-
-        // 播放音乐按钮点击事件
-        playButton.addEventListener("click", function() {
-            bgMusic.play();
-            playButton.style.display = "none";  // 隐藏播放按钮
-        });
-
+        
         // No 按钮点击事件
         noButton.addEventListener("click", function() {
             clickCount++;
