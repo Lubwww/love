@@ -15,9 +15,10 @@
         </style>
 </head>
     <body>
-        <audio autoplay="autopaly" loop="loop" id="audios">
+        <audio autoplay="autoplay" loop="loop" id="bgMusic">
             <source src="./music.mp3" type="audio/mp3" />
         </audio>
+        <button id="playButton" class="play-button">播放音乐</button>
         <div id="main">
             <div id="error">本页面采用HTML5编辑，目前您的浏览器无法显示，请换成谷歌(<a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a>)或者火狐(<a href="http://firefox.com.cn/download/">Firefox</a>)浏览器，或者其他游览器的最新版本。</div>
              <div id="wrap">
@@ -46,7 +47,7 @@
                   </div>
                 <div id="clock-box">
                     <span class="STYLE1"></span><font color="#33CC00">亲爱的，我喜欢你</font>
-<span class="STYLE1">已经是……</span>
+                    <span class="STYLE1">已经是……</span>
                   <div id="clock"></div>
               </div>
                 <canvas id="canvas" width="1100" height="680"></canvas>
@@ -55,8 +56,22 @@
         </div>
     
     <script>
-        document.addEventListener('click', function() {
-            document.getElementById('audios').play()
+        let bgMusic = document.getElementById("bgMusic");
+        let playButton = document.getElementById("playButton");
+
+        window.onload = function() {
+            bgMusic.play().catch(function() {
+                // 如果自动播放失败，显示播放按钮
+                playButton.style.display = "block";
+            });
+        };
+
+        // 播放音乐按钮点击事件
+        playButton.addEventListener("click", function() {
+            bgMusic.play();
+            playButton.style.display = "none";  // 隐藏播放按钮
+        });
+
     </script>
 
     <script>
